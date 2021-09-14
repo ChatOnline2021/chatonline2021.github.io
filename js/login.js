@@ -1,5 +1,5 @@
 function register(){
-    window.open("https://chenglan.user.air-team.tk/auc/oauth?" + location.origin + "/auc-oauth;username","blank");
+    window.open("https://chenglan28.github.io/auc/oauth?" + location.origin + "/auc-oauth;username","blank");
 };
 function login(){
     register();
