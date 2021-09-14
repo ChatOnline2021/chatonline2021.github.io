@@ -6,7 +6,24 @@ onload = function(){
     document.querySelector("#username").innerHTML = username || "您尚未登录";
     if (loginstatus){
         document.querySelector("#account_operation_button").innerHTML = "<button onclick=javascript:logout(); class=topbox_operation_button>退出登录</button>";
-        document.querySelector("#chat-area").innerHTML = "<span style='font-size:1.2em'>添加好友</span><br><button class=topbox_operation_button onclick=javascript:location.href='/myFriends' style='font-size:0.95em;width:100px'>返回</button><br>请输入好友ID<input type=text maxlength=24 placeholder=xxxxxxxx class=friends_input_box><br><input type=button value=提交 class=topbox_operation_button onclick=javascript:addFriends();>";
+        document.querySelector("#chat-area").innerHTML = "正在从服务器抓取您的信息......请稍后";
+        ajax(storage_server + "/userdata/" + username + "?t=" + new Date().getTime()).then(res => {
+            document.querySelector("#chat-area").innerHTML = "正在渲染数据......请稍后"
+            var status = res[0];
+            var result = res[1];
+            if (status >= 200 && status < 400){
+                result = JSON.parse(result);
+                var friends = result.my_friends;
+                var html_string = "<span style='font-size:1.2em'>好友列表</span><br><button class=topbox_operation_button onclick=javascript:location.href='/' style='font-size:0.95em;width:100px'>返回</button><button class=topbox_operation_button onclick=javascript:location.href='/addFriends' style='font-size:0.95em;width:140px'>+ 添加好友</button><hr>朋友ID | 删除<br>";
+                for (var i = 0;i < friends.length;i++){
+                    html_string += friends[i] + "| <button class=topbox_operation_button onclick=javascript:delete_friend('" + friends[i] + "')>删除</button><br>"
+                };
+                html_string += "没有更多数据了~"
+                document.querySelector("#chat-area").innerHTML = html_string;
+            } else {
+                document.querySelector("#chat-area").innerHTML = "无法从服务器抓取您的信息！<br>请<a href=# onclick=javascript:location.reload();>重试</a>";
+            };
+        });
     } else {
         location.href = "/";
     };
@@ -24,8 +41,11 @@ function getusername(){
 };
 const storage_server = "https://chatonline.product.air-team.tk";
 
-function addFriends(){
-    var friend_id = document.querySelector(".friends_input_box").value;
+function AsyncFunc(func,args){
+    return func(args);
+};
+
+function delete_friend(friend_id){
     ajax(storage_server + "/userdata/" + window.username).then(res => {
         var code = res[0];
         var result = res[1];
@@ -36,11 +56,10 @@ function addFriends(){
             var i = 0;
             while (i < friends.length){
                 if (friend_id == friends[i]){
-                    alert("对方已是您的好友!");
+                    friends.splice(i,1);
                 };
                 i++;
             };
-            friends.push(friend_id);
             getdata("userdata/" + window.username).then(res => {
                 var code = res[0];
                 var result = res[1];
