@@ -39,7 +39,7 @@ function getusername(){
         return {ok:true,username:atob(unescape(username))};
     };
 };
-const storage_server = "https://chatonline.product.air-team.tk";
+const storage_server = "https://chatonline2021.github.io";
 
 function AsyncFunc(func,args){
     return func(args);
