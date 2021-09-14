@@ -1,0 +1,8 @@
+.friends_input_box{
+    background-color:bisque;
+    color:rgb(161, 110, 219);
+    font-size:0.8em;
+    border-radius:12px;
+    width:180px;
+    cursor:pointer;
+}
