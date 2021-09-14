@@ -46,7 +46,7 @@ function AsyncFunc(func,args){
 };
 
 function delete_friend(friend_id){
-    ajax(storage_server + "/userdata/" + window.username).then(res => {
+    ajax(storage_server + "/userdata/" + window.username + "?t=" + new Date().getTime()).then(res => {
         var code = res[0];
         var result = res[1];
         if (code >= 200 && code < 400){

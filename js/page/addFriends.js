@@ -26,7 +26,7 @@ const storage_server = "https://chatonline.product.air-team.tk";
 
 function addFriends(){
     var friend_id = document.querySelector(".friends_input_box").value;
-    ajax(storage_server + "/userdata/" + window.username).then(res => {
+    ajax(storage_server + "/userdata/" + window.username + "?t=" + new Date().getTime()).then(res => {
         var code = res[0];
         var result = res[1];
         if (code >= 200 && code < 400){
@@ -40,7 +40,7 @@ function addFriends(){
                 };
                 i++;
             };
-            friends.push(friend_id);
+            friends[friends.length] = friend_id;
             getdata("userdata/" + window.username).then(res => {
                 var code = res[0];
                 var result = res[1];
