@@ -22,7 +22,7 @@ function getusername(){
         return {ok:true,username:atob(unescape(username))};
     };
 };
-const storage_server = "https://chatonline2021.github.io";
+
 
 function addFriends(){
     var friend_id = document.querySelector(".friends_input_box").value;
@@ -53,7 +53,7 @@ function addFriends(){
                     var code = res[0];
                     var result = res[1];
                     if (code >= 200 && code < 400){
-                        alert("操作成功！\n由于服务端开启了缓存，您可能需要等待几分钟后才能看见您所见的更改");
+                        alert("操作成功！\n");
                         location.href = "/myFriends";
                     } else alert("通信错误！请重试");
                 });
