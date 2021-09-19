@@ -1,3 +1,4 @@
+const storage_server = "https://chatonline2021.github.io";
 function getdata(path,access_token = null,responseType = "text"){
     if (window.XMLHttpRequest)
         var xhr = new XMLHttpRequest();
