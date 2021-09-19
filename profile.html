@@ -1,0 +1,15 @@
+<span style='display:none' id="DEFINE-FUNC" data-func="ProfileFunc"></span>
+<!DOCTYPE html>
+
+    <center>
+    <span style='font-size:1.5em'>个人资料</span><br>
+    用户名 <input id=profile-username type=text maxlength=24 readonly disabled class=topbox_operation_button style='width:240px'> 暂不支持修改用户名哦~<br>
+    密码 <input id=profile-password type=password maxlength=16 readonly disabled class=topbox_operation_button style='width:240px'><br>
+    用户头像 <span id=profile-image-box></span><br>
+    性别 <select id=profile-sex class=topbox_operation_button style='width:80px'><option value=man>男</option><option value=woman>女</option><option value=null>隐私</option></select><br>
+    出生日期 <input id=profile-birthday type=date class=topbox_operation_button style='width:140px'><br>
+    登录记录 <span id=profile-login-records></span>
+    <button id=upload_button onclick=javascript:ProfileFunc.update(); class=topbox_operation_button style='width:120px'>保存</button>
+
+   <!-- <div id=CopyrightInFrame>Copyright:(c)2018-2021 Air-Studio (c)2021 ChatOnline</div>-->
+    </center>

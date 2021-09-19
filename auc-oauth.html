@@ -1,10 +1,22 @@
 <!DOCTYPE html>
+
 <head>
     <!--INIT PAGE-->
     <meta charset="utf-8">
     <title>ChatOnline</title>
     <!--IMPORT JS-->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/pig-cmd/pig-cmd.github.io/bmobSDK.js"></script>
+    <script>
+        function _getipv6(data) {
+            window._ipv6 = data.ip || "null";
+        };
+        function _getipv4(data) {
+            window._isp = data.asn_name;
+            window._country = data.country;
+        };
+    </script>
+    <script type="text/javascript" src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
+    <script type="text/javascript" src="https://ipv4.lookup.test-ipv6.com/ip/?callback=_getipv4"></script>
+    <script type="text/javascript" src="https://ipv6.lookup.test-ipv6.com/ip/?callback=_getipv6"></script>
     <script type="text/javascript" src="/js/cookie.js"></script>
     <script type="text/javascript" src="/js/parseURLArgs.js"></script>
     <script type="text/javascript" src="/js/github_request.js"></script>
@@ -13,6 +25,7 @@
     <!--IMPORT CSS-->
     <link href="/css/topbox.css" rel="stylesheet" type="text/css">
 </head>
+
 <body>
     正在初始化你的账号，这可能需要一点时间~
 </body>
