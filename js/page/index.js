@@ -14,7 +14,7 @@ onload = function(){
                 result = JSON.parse(result);
                 var friends = result.my_friends;
                 var hubs = result.my_hubs;
-                var html_string = "<button class=topbox_operation_button onclick=javascript:location.href='/myFriends' style='font-size:0.95em;width:100px' disabled>我的好友</button><button class=topbox_operation_button onclick=javascript:exec('/profile') style='font-size:0.95em;width:140px'>个人资料</button><button class=topbox_operation_button onclick=javascript:exec('/newHub') style='font-size:0.95em;width:140px'>+ 新建群聊</button><br>好友功能还在测试中，请等待下一次更新<hr>群聊ID | 群聊名称 | 消息数量<br>";
+                var html_string = "<button class=topbox_operation_button onclick=javascript:location.href='/myFriends' style='font-size:0.95em;width:100px' disabled>我的好友</button><button class=topbox_operation_button onclick=javascript:exec('/profile') style='font-size:0.95em;width:140px'>个人资料</button><button class=topbox_operation_button onclick=javascript:exec('/joinHub') style='font-size:0.95em;width:140px'>+ 加入群聊</button><button class=topbox_operation_button onclick=javascript:exec('/newHub') style='font-size:0.95em;width:140px'>+ 新建群聊</button><br>好友功能还在测试中，请等待下一次更新<hr>群聊ID | 群聊名称 | 消息数量<br>";
                 for (var i = 0;i < hubs.length;i++){
                     var AsyncRenderId = parseInt(Math.random().toString().substring(3,12)).toString(16);
                     html_string += hubs[i] + "| <a href=/hub?hid=" + hubs[i] + "><span id=AsyncRender-id-" + AsyncRenderId + ">Loading......</span> | <span id=HubMessages-id-" + hubs[i] + ">0</span><br>";

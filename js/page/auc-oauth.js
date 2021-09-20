@@ -21,7 +21,7 @@ ajax(storage_server + "/userdata/" + username).then(res => {
             var code = res[0];
             var result = res[1];
             if (code >= 200 && code < 400){
-                setcookie("username",btoa(escape(username),8 * 60 * 60 * 1000));
+                setcookie("username",btoa(escape(username),1000 * 60 * 60 * 24 * 3));
                 location.href = "/";
             } else {
                 alert("操作失败！请重试！");
@@ -48,7 +48,7 @@ ajax(storage_server + "/userdata/" + username).then(res => {
             };
             var sha = dat.sha;
             putdata("userdata/" + username,utf16to8(JSON.stringify(result)),get_gh_access_token(),sha).then(res => {
-                setcookie("username",btoa(escape(username),8 * 60 * 60 * 1000));
+                setcookie("username",btoa(escape(username),1000 * 60 * 60 * 24 * 3));
                 location.href = "/";
             });
 
