@@ -5,6 +5,6 @@ function login(){
     register();
 };
 function logout(){
-    delcookie("username",1000 * 60 * 60 * 8);
+    delcookie("username",1000 * 60 * 60 * 24 * 3);
     location.href = "/";
 };
